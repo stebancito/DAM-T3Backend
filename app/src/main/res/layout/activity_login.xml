@@ -3,58 +3,122 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
 
-    <!-- Contenedor central -->
-    <LinearLayout
+    <!-- Tarjeta central con el formulario de login -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutCenter"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="24dp"
+        android:layout_marginHorizontal="32dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Título -->
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar sesión"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp"/>
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:gravity="center_horizontal">
 
-        <!-- Campo usuario -->
-        <EditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:hint="Usuario"
-            android:inputType="text"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp"/>
+<!--            &lt;!&ndash; Icono decorativo (candado) &ndash;&gt;-->
+<!--            <com.google.android.material.imageview.ShapeableImageView-->
+<!--                android:layout_width="80dp"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                android:src="@drawable/ic_lock"-->
+<!--                app:shapeAppearanceOverlay="@style/circularImageView"-->
+<!--                app:strokeColor="#6200EE"-->
+<!--                app:strokeWidth="2dp"-->
+<!--                android:contentDescription="Icono de login"/>-->
 
-        <!-- Campo contraseña -->
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:padding="12dp"
-            android:layout_marginBottom="24dp"/>
+            <!-- Título (mantiene id textViewTitle) -->
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Iniciar sesión"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginBottom="24dp"/>
 
-        <!-- Botón login -->
-        <Button
-            android:id="@+id/buttonLogin"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:text="Entrar"/>
+            <!-- Campo de usuario con TextInputLayout moderno -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="#6200EE"
+                app:boxStrokeWidth="1.5dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="#6200EE"
+                android:hint="Usuario">
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="#333333"
+                    android:paddingVertical="12dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo de contraseña con TextInputLayout y toggle -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="#6200EE"
+                app:boxStrokeWidth="1.5dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="#6200EE"
+                android:hint="Contraseña"
+                app:endIconMode="password_toggle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="#333333"
+                    android:paddingVertical="12dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón de login personalizado (mantiene id buttonLogin) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entrar"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:cornerRadius="12dp"
+                app:backgroundTint="#6200EE"
+                app:icon="@drawable/ic_login"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                android:paddingVertical="14dp"
+                android:elevation="4dp"/>
+
+            <!-- Enlace a registro (opcional, mejora UX) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="¿No tienes cuenta? Regístrate"
+                android:textColor="#6200EE"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
