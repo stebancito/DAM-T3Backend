@@ -39,13 +39,17 @@ class RegisterActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
                 val response = RetrofitClient.instance.register(RegisterRequest(username, password))
-                Toast.makeText(this@RegisterActivity, "Éxito: ${response.message}", Toast.LENGTH_LONG).show()
+                if (response.isSuccessful) {
+                    val apiResponse = response.body()
+                    Toast.makeText(this@RegisterActivity, "Éxito: ${apiResponse?.message}", Toast.LENGTH_LONG).show()
+                    // Opcional: Volver al Login tras registro exitoso
+                    finish()
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    Toast.makeText(this@RegisterActivity, "Error en registro: $errorBody", Toast.LENGTH_LONG).show()
+                }
             } catch (e: IOException) {
                 Toast.makeText(this@RegisterActivity, "Error de red: ${e.message}", Toast.LENGTH_LONG).show()
-            } catch (e: retrofit2.HttpException) {
-                // Cuando el servidor responde con error (ej. 400, 409)
-                val errorBody = e.response()?.errorBody()?.string()
-                Toast.makeText(this@RegisterActivity, "Error: $errorBody", Toast.LENGTH_LONG).show()
             } catch (e: Exception) {
                 Toast.makeText(this@RegisterActivity, "Error inesperado: ${e.message}", Toast.LENGTH_LONG).show()
             }
