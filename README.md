@@ -54,15 +54,14 @@ A continuación se muestran las capturas que evidencian el cumplimiento de los e
 ### Ejercicio 1 – Conexión y verificación de la API
 Al iniciar la app, se realiza una petición GET al endpoint raíz (`/`) y se muestra el mensaje de respuesta en un `TextView`.
 
-![Ejercicio 1](screenshots/ejercicio1.jpg)
+<img src="screenshots/Inicio.png" width="300">
 
 ### Ejercicio 2 – Pantalla de Registro
 - **Caso exitoso**: registro de un nuevo usuario.
-- **Caso de usuario duplicado**: se muestra mensaje indicando que el usuario ya existe.
 
-| Registro exitoso | Usuario duplicado |
-|------------------|-------------------|
-| ![Registro exitoso](screenshots/registro_exitoso.jpg) | ![Usuario duplicado](screenshots/registro_duplicado.jpg) |
+<img src="screenshots/crearCuenta1.png" width="300">
+<img src="screenshots/crearCuenta2.png" width="300">
+
 
 ### Ejercicio 3 – Pantalla de Login
 - **Login exitoso**: tras credenciales correctas, se navega a la pantalla de bienvenida mostrando el nombre de usuario.
@@ -70,12 +69,12 @@ Al iniciar la app, se realiza una petición GET al endpoint raíz (`/`) y se mue
 
 | Login exitoso → Bienvenida | Login fallido |
 |----------------------------|---------------|
-| ![Login exitoso](screenshots/login_exitoso.jpg) | ![Login fallido](screenshots/login_fallido.jpg) |
+| <img src="screenshots/loginExito.png" width="300"> | <img src="screenshots/badPassword.png" width="300"> |
 
 ### Ejercicio 4 – Manejo de errores de red
 Al detener el backend (`docker compose down`) e intentar hacer login, la app captura la excepción y muestra un mensaje amigable al usuario.
 
-![Error de red](screenshots/error_red.jpg)
+<img src="screenshots/desconexion.png" width="300">
 
 ## Funcionalidades adicionales (JWT)
 
